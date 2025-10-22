@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import LeftPanelManual from "./LeftPanelManual";
-import LeftPanelAutomatic from "./LeftPanelAutomatic"; 
+import LeftPanelAutomatic from "./LeftPanelAutomatic";
 import Popup from "./Popup";
 import RightBoard from "./RightBoard";
 import { useBombDiamondGame } from "./helper/useBombDiamondGame";
@@ -30,7 +30,7 @@ const BombDiamondGame: React.FC = () => {
     parseInputToNumber,
   } = useBombDiamondGame();
 
-  const [activeTab, setActiveTab] = useState<"manual" | "auto">("manual"); // 👈 tab state
+  const [activeTab, setActiveTab] = useState<"manual" | "auto">("manual"); //  tab state
 
   const totalBoxes = 25;
   const displayBoxes = useMemo(
@@ -45,7 +45,7 @@ const BombDiamondGame: React.FC = () => {
     <div className=" bg-gray-900 text-white p-6">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
         {/* LEFT PANEL with Tabs */}
-        <aside className="w-full  mb-4 lg:mb-0 lg:max-w-[360px] left_part_scroll bg-[#323738] rounded-bl-xl rounded-tl-xl shadow-lg flex flex-col">
+        <aside className="w-full  mb-4 lg:mb-0 lg:max-w-[360px] left_part_scroll bg-[#323738] rounded-xl lg:rounded-none lg:rounded-tl-xl lg:rounded-bl-xl  shadow-lg flex flex-col">
           {/* Tab Header */}
           <div className="flex">
             <button
@@ -134,9 +134,7 @@ const BombDiamondGame: React.FC = () => {
       {showCashoutPopup && gameStatus === "cashout" && (
         <CashoutPopup
           multi={profitMultiplier.toFixed(2)}
-          amount={payoutAmount.toFixed(
-            2
-          )}
+          amount={payoutAmount.toFixed(2)}
         />
       )}
     </div>

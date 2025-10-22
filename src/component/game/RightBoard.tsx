@@ -18,7 +18,7 @@ const RightBoard: React.FC<{
 }) => {
   return (
     <main className="w-full flex items-center justify-center">
-      <div className="right_part min-h-[calc(100vh-114px)] rounded-br-xl rounded-tr-xl  p-6 shadow-xl h-full flex flex-col w-full items-center justify-center">
+      <div className="right_part lg:min-h-[calc(100vh-114px)] rounded-xl lg:rounded-none lg:rounded-br-xl  lg:rounded-tr-xl  p-6 shadow-xl h-full flex flex-col w-full items-center justify-center">
         {/* History */}
         <div className="flex gap-2 overflow-x-auto w-full mb-4">
           {history.map((h) => (
@@ -45,8 +45,6 @@ const RightBoard: React.FC<{
           />
           <div
             className="grid gap-2"
-  
-
             style={{
               gridTemplateColumns: "repeat(5, minmax(40px, 1fr))",
               gridTemplateRows: "repeat(5, minmax(40px, 1fr))",

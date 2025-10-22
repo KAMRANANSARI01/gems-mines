@@ -120,7 +120,7 @@ const LeftPanelManual: React.FC<{
         ) : (
           <>
             <button
-              onClick={revealRandomTile}
+              onClick={revealRandomTile}  
               className="w-full py-3 bg-gray-700 text-gray-200 font-semibold rounded-lg mb-3 hover:bg-gray-600"
             >
               🪄 Pick a Tile Randomly
