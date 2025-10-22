@@ -7,19 +7,19 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   justify-content: center;
 }
-.right_part{
+.right_part {
   background-image: url("../public/bg-mines-dark.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 /* Remove number input arrows */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
 .left_part_scroll ::-webkit-scrollbar {
@@ -41,4 +41,18 @@ input[type=number] {
 
 .zoom-animation {
   animation: zoomInOut 0.3s ease-in-out;
+}
+
+/* Mobile default: 40px x 40px */
+.board-box {
+  width: 40px;
+  height: 40px;
+}
+
+/* sm and above: 80px x 80px */
+@media (min-width: 640px) {
+  .board-box {
+    width: 80px;
+    height: 80px;
+  }
 }
