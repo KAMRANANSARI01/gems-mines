@@ -50,7 +50,7 @@ const LeftPanelAutomatic: React.FC<LeftPanelAutomaticProps> = ({
      {/* Amount Input */}
          <div >
            <div className="text-sm text-gray-300 mb-1  font-semibold flex items-center gap-x-1">Amount <AiOutlineInfoCircle color="#1aa964" /></div>
-           <label className="flex gap-1 bg-[#292D2e] items-center border border-transparent  rounded-lg pl-2 pr-0.5 py-[3.25px] focus-within:border-green-400  transition-colors ">
+           <label className="flex gap-1 bg-[#292D2e] items-center border border-transparent   rounded-lg pl-2 pr-0.5 py-[3.25px] focus-within:border-green-400  transition-colors ">
              <div>🇮🇳</div>
    
              <input
