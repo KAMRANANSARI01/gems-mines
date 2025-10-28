@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 export type GameStatus = "idle" | "playing" | "win" | "lose" | "cashout";
 export type BoxType = "bomb" | "diamond";
+import clickSfx from "../.././../../public/boxclick.mp3";
+import cashoutSfx from "./.././../../../public/cashout.wav";
+import gameoverSfx from "./.././../../../public/gameover.wav"
+import useSound from "use-sound";
 
 export type HistoryEntry = {
   id: string;
@@ -24,6 +28,12 @@ export const useBombDiamondGame = (totalBoxes: number = 25) => {
   const [clickedIndices, setClickedIndices] = useState<number[]>([]);
   const [betError, setBetError] = useState<string>("");
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+
+
+  // --- Sounds ---
+const [playClick] = useSound(clickSfx, { volume: 0.5 });
+const [playCashout] = useSound(cashoutSfx, { volume: 0.5 });
+const [playGameOver] = useSound(gameoverSfx, { volume: 0.5 });
 
   // ----Helper Functions -----
   const pushHistory = (kind: HistoryEntry["kind"], multiplier: number, amount: number) => {
@@ -85,6 +95,9 @@ export const useBombDiamondGame = (totalBoxes: number = 25) => {
 
     if (revealed[index] || gameStatus !== "playing") return;
 
+    playClick();
+
+
     const newRevealed = [...revealed];
     newRevealed[index] = true;
     setRevealed(newRevealed);
@@ -93,6 +106,7 @@ export const useBombDiamondGame = (totalBoxes: number = 25) => {
     if (!firstTileRevealed) setFirstTileRevealed(true);
 
     if (boxes[index] === "bomb") {
+      playGameOver();
       setGameStatus("lose");
       setShowPopup(true);
       setRevealed(Array(totalBoxes).fill(true));
@@ -120,6 +134,8 @@ export const useBombDiamondGame = (totalBoxes: number = 25) => {
 
   const revealRandomTile = () => {
     if (gameStatus !== "playing") return;
+        playClick();
+
     const unrevealedIndices = revealed
       .map((r, i) => (!r ? i : -1))
       .filter((i) => i !== -1);
@@ -132,6 +148,7 @@ export const useBombDiamondGame = (totalBoxes: number = 25) => {
 
   const handleCashout = () => {
     if (!firstTileRevealed || gameStatus !== "playing") return;
+      playCashout();
 
     const payout = +(betAmount * profitMultiplier).toFixed(2);
     const multi = +profitMultiplier.toFixed(2);
